@@ -1,21 +1,32 @@
 require 'gosu'
+require_relative 'models/tiles'
 
 module Pacman
 
   class Game < Gosu::Window
     def initialize
-      super 640, 480
-      self.caption = 'Pacman'
+      @components = []
+      load_components
+      load_content
 
-      @background_image = Gosu::Image.new('../assets/images/sprites/pacman.png', :tileable => true)
+      super @components[0].width, @components[0].height
+      self.caption = 'Pacman'
+    end
+
+    def load_components
+      @components << Tiles.new
+    end
+
+    def load_content
+      @components.each(&:load)
     end
 
     def update
-      # todo
+      @components.each(&:update)
     end
 
     def draw
-      @background_image.draw(0, 0, 0)
+      @components.each(&:draw)
     end
   end
 
