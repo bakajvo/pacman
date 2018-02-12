@@ -41,7 +41,17 @@ module Pacman
 
     def check_events
       @pacman.die if check_die(@pos, @pacman.pos)
-      @speed = @pacman.overpower.zero? ? SPEED : 1
+      @speed = @pacman.overpower.zero? ? fix_position : 1
+    end
+
+    def fix_position
+      unless @pos[0].even?
+        @pos += @last_move == :turn_left ? Vector[1, 0] : Vector[-1, 0]
+      end
+      unless @pos[1].even?
+        @pos += @last_move == :turn_down ? Vector[0, 1] : Vector[0, -1]
+      end
+      SPEED
     end
 
     def check_die(a, b)
@@ -53,16 +63,14 @@ module Pacman
     def choose_random_move
       result = []
       MOVES.each do |x|
-        meth = method(x)
-        meth.call
+        method(x).call
         next_move = @pos + @vel
         result << x if Helper.available_move?(next_move, @dir, @map)
       end
       result.delete @last_move
       res = result.sample
       update_last_move(res)
-      tmp = method(res)
-      tmp.call
+      method(res).call
     end
 
     def update_last_move(move)

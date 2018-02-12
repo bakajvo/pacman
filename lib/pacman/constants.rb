@@ -12,7 +12,7 @@ module Pacman
   STAY = 5
 
   SPEED = 2
-  OVERPOWER = 401
+  OVERPOWER = 600
 
   PACMAN = 4
   BLINKY = 8
