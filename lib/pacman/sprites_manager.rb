@@ -7,7 +7,7 @@ module Pacman
     TILE_SIZE = 32
 
     def initialize
-      @sprites = Gosu::Image.load_tiles('../assets/images/sprites/pacman.png', TILE_SIZE, TILE_SIZE)
+      @sprites = Gosu::Image.load_tiles('D:\Skola\RUB\pacman\assets\images\sprites\pacman.png', TILE_SIZE, TILE_SIZE)
     end
 
     def get_sprites(what)

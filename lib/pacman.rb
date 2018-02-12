@@ -4,10 +4,9 @@ require "pacman/game"
 module Pacman
   def self.init
     begin
-      $game = Pacman::Game.new
-      $game.begin!
+      Pacman::Game.new
     rescue Interrupt => e
-      puts "\r Something goes wrong! :("
+      puts "\r Something goes wrong! :( #{e}"
     end
   end
 end
