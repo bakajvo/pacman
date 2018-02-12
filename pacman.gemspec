@@ -6,7 +6,7 @@ require "pacman/version"
 Gem::Specification.new do |spec|
   spec.name          = 'pacman'
   spec.version       = Pacman::VERSION
-  spec.authors       = ['Vojtech Bakaj']
+  spec.authors       = ['Vojtěch Bakaj']
   spec.email         = ['bakajvo1@fit.cvut.cz']
 
   spec.summary       = 'Pacman'
