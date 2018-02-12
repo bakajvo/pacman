@@ -5,9 +5,10 @@ module Pacman
     include Singleton
 
     TILE_SIZE = 32
+    ROOT = File.dirname(File.dirname(__FILE__)) + '/../assets'
 
     def initialize
-      @sprites = Gosu::Image.load_tiles('../assets/images/sprites/pacman.png', TILE_SIZE, TILE_SIZE)
+      @sprites = Gosu::Image.load_tiles(ROOT + '/images/sprites/pacman.png', TILE_SIZE, TILE_SIZE)
     end
 
     def get_sprites(what)

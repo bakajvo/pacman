@@ -7,6 +7,7 @@ module Pacman
   class Tiles < Component
 
     TILE_SIZE = 32
+    ROOT = File.dirname(File.dirname(__FILE__)) + '/../../assets'
 
     AVAILABLE_TILE = [0, 9, 4, 2, 5, 6, 7, 8].freeze
 
@@ -14,7 +15,7 @@ module Pacman
 
     def initialize
       @tiles = SpritesManager.instance.get_sprites(MAP_SPRITES)
-      @file = File.open('../assets/map/01.map')
+      @file = File.open(ROOT + '/map/01.map')
       @map = []
       @width = 0
       @height = 0
