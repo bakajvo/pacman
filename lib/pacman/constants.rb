@@ -14,6 +14,9 @@ module Pacman
   SPEED = 2
   OVERPOWER = 600
 
+  ATTACK = 800
+  SCATTER = 400
+
   PACMAN = 4
   BLINKY = 8
   BLINKY_SPRITES = [0, 1].freeze

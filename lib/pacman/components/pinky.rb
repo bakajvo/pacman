@@ -19,6 +19,19 @@ module Pacman
       @last_dir = @dir = STAY
       @last_move = nil
       @speed = SPEED
+      @combat = 0
+    end
+
+    def update
+      @combat += 1
+      choose_move
+      @pos += @vel
+      check_events
+      @combat %= ATTACK + SCATTER
+    end
+
+    def select_direction(possible)
+      @combat < ATTACK ? attack(possible) : random(possible)
     end
   end
 end

@@ -74,7 +74,7 @@ module Pacman
     end
 
     def select_direction(possible)
-      possible.sample
+      random(possible)
     end
 
     def update_last_move(move)
@@ -104,5 +104,32 @@ module Pacman
       @vel = Vector[0, @speed]
     end
 
+    def random(possible)
+      possible.sample
+    end
+
+    def attack(possible)
+      return possible[0] if possible.length == 1
+      min = possible[0]
+      possible.each do |x|
+        min = x if distance(calc_position(x), @pacman.pos) < distance(calc_position(min), @pacman.pos)
+      end
+      min
+    end
+
+    def distance(a, b)
+      x = a[0] - b[0]
+      y = a[1] - b[1]
+      Math.sqrt(x * x + y * y)
+    end
+
+    def calc_position(dir)
+      pos = @pos
+      pos += Vector[48, 16] if dir == :turn_right
+      pos += Vector[-16, 16] if dir == :turn_left
+      pos += Vector[16, -16] if dir == :turn_top
+      pos += Vector[16, 48] if dir == :turn_down
+      pos
+    end
   end
 end

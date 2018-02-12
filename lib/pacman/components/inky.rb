@@ -20,5 +20,10 @@ module Pacman
       @last_move = nil
       @speed = SPEED
     end
+
+    def select_direction(possible)
+      attack(possible)
+    end
+
   end
 end

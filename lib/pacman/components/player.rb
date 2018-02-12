@@ -100,7 +100,7 @@ module Pacman
     end
 
     def eat_point
-      SoundsManager.instance.chomp.play
+      #SoundsManager.instance.chomp.play
       @score += 1
     end
 
