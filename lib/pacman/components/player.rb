@@ -6,21 +6,13 @@ require 'matrix'
 module Pacman
   class Player < Component
 
-    LEFT = 1
-    RIGHT = 2
-    UP = 3
-    DOWN = 4
-    STAY = 5
-
-    SPEED = 2.0
-
     def initialize(map)
       @map = map
       @animation_left = SpritesManager.instance.get_sprites(PACMAN_LEFT)
       @animation_right = SpritesManager.instance.get_sprites(PACMAN_RIGHT)
       @animation_up = SpritesManager.instance.get_sprites(PACMAN_UP)
       @animation_down = SpritesManager.instance.get_sprites(PACMAN_DOWN)
-      @pos = @map.spawn
+      @pos = @map.spawn(PACMAN)
       @vel = Vector[0, 0]
       @last_dir = @dir = STAY
       @ticks = 0
@@ -56,6 +48,7 @@ module Pacman
         next_move = @pos + last_move
         @pos = next_move if available_move?(next_move, @last_dir)
       end
+      check_events
     end
 
     def draw
@@ -75,6 +68,20 @@ module Pacman
 
       @ticks += 1
       @ticks %= 20
+    end
+
+    def check_events
+      x = @pos[0] / 32
+      y = @pos[1] / 32
+      if (@pos[0] % 32).zero? && (@pos[1] % 32).zero?
+        if @map.map[y][x].zero?
+          @map.clear_tile(x, y)
+          eat_point
+        elsif @map.map[y][x] == 2
+          @map.clear_tile(x, y)
+          overpower
+        end
+      end
     end
 
     def last_move
@@ -113,6 +120,18 @@ module Pacman
       turn_right if Gosu.button_down?(Gosu::KbRight) || Gosu.button_down?(Gosu::GpRight)
       turn_up if Gosu.button_down?(Gosu::KbUp) || Gosu.button_down?(Gosu::KbUp)
       turn_down if Gosu.button_down?(Gosu::KbDown) || Gosu.button_down?(Gosu::KbDown)
+    end
+
+    def eat_point
+      p 'Mnam mnam mnam'
+    end
+
+    def overpower
+      p 'OVERPOWER'
+    end
+
+    def die
+      p 'Arghhhhh'
     end
 
   end

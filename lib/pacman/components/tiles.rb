@@ -8,7 +8,7 @@ module Pacman
 
     TILE_SIZE = 32
 
-    AVAILABLE_TILE = [0, 9, 4, 2].freeze
+    AVAILABLE_TILE = [0, 9, 4, 2, 5, 6, 7, 8].freeze
 
     attr_reader :map
 
@@ -49,10 +49,10 @@ module Pacman
       @height * TILE_SIZE
     end
 
-    def spawn
+    def spawn(who)
       (0..@height - 1).each do |y|
         (0..@width - 1).each do |x|
-          return Vector[x * TILE_SIZE, y * TILE_SIZE] if @map[y][x] == 4
+          return Vector[x * TILE_SIZE, y * TILE_SIZE] if @map[y][x] == who
         end
       end
       Vector[0, 0]
@@ -60,6 +60,10 @@ module Pacman
 
     def available?(x, y)
       AVAILABLE_TILE.include? @map[y][x]
+    end
+
+    def clear_tile(x, y)
+      @map[y][x] = 9
     end
 
   end
