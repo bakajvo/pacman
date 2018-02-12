@@ -67,7 +67,7 @@ module Pacman
         next_move = @pos + @vel
         result << x if Helper.available_move?(next_move, @dir, @map)
       end
-      result.delete @last_move
+      result.delete @last_move if result.length > 1
       res = result.sample
       update_last_move(res)
       method(res).call

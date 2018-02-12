@@ -21,4 +21,5 @@ module Pacman
   INKY = 6
   CLYDE = 7
   WEAK_GHOSTS = [12, 13].freeze
+  DOOR = 3
 end

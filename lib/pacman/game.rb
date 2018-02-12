@@ -3,6 +3,7 @@ require_relative 'components/tiles'
 require_relative 'components/player'
 require_relative 'components/blinky'
 require_relative 'components/end'
+require_relative 'components/win'
 
 module Pacman
   class Game < Gosu::Window
@@ -26,6 +27,9 @@ module Pacman
         score = @components[1].score
         @components = []
         @components << End.new(score)
+      elsif @components.length > 1 && @components[1].score == @components[0].points
+        @components = []
+        @components << Win.new
       end
     end
 
