@@ -1,6 +1,9 @@
 require 'gosu'
 require_relative 'components/tiles'
 require_relative 'components/player'
+require_relative 'components/pinky'
+require_relative 'components/inky'
+require_relative 'components/clyde'
 require_relative 'components/blinky'
 require_relative 'components/end'
 require_relative 'components/win'
@@ -18,6 +21,9 @@ module Pacman
     def load_components
       @components << Tiles.new
       @components << Player.new(@components[0])
+      @components << Pinky.new(@components[1], @components[0])
+      @components << Inky.new(@components[1], @components[0])
+      @components << Clyde.new(@components[1], @components[0])
       @components << Blinky.new(@components[1], @components[0])
     end
 

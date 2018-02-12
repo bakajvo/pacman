@@ -6,14 +6,14 @@ require_relative 'ghost'
 require 'matrix'
 
 module Pacman
-  class Blinky < Ghost
+  class Inky < Ghost
 
     def initialize(pacman, map)
       @pacman = pacman
       @map = map
-      @sprites = SpritesManager.instance.get_sprites(BLINKY_SPRITES)
+      @sprites = SpritesManager.instance.get_sprites(INKY_SPRITES)
       @weak_ghost = SpritesManager.instance.get_sprites(WEAK_GHOSTS)
-      @pos = @map.spawn(BLINKY)
+      @pos = @map.spawn(INKY)
       @ticks = 0
       @vel = Vector[0, 0]
       @last_dir = @dir = STAY

@@ -18,8 +18,11 @@ module Pacman
   BLINKY = 8
   BLINKY_SPRITES = [0, 1].freeze
   PINKY = 5
+  PINKY_SPRITES = [4, 5].freeze
   INKY = 6
+  INKY_SPRITES = [6, 7].freeze
   CLYDE = 7
+  CLYDE_SPRITES = [2, 3].freeze
   WEAK_GHOSTS = [12, 13].freeze
   DOOR = 3
 end
