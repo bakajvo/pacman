@@ -18,18 +18,6 @@ module Pacman
     end
 
     def update
-      if Gosu.button_down?(Gosu::KbLeft) || Gosu.button_down?(Gosu::GpLeft)
-        @components[1].turn_left
-      end
-      if Gosu.button_down?(Gosu::KbRight) || Gosu.button_down?(Gosu::GpRight)
-        @components[1].turn_right
-      end
-      if Gosu.button_down?(Gosu::KbUp) || Gosu.button_down?(Gosu::KbUp)
-        @components[1].turn_up
-      end
-      if Gosu.button_down?(Gosu::KbDown) || Gosu.button_down?(Gosu::KbDown)
-        @components[1].turn_down
-      end
       @components.each(&:update)
     end
 

@@ -8,6 +8,8 @@ module Pacman
 
     TILE_SIZE = 32
 
+    AVAILABLE_TILE = [0, 9, 4, 2].freeze
+
     attr_reader :map
 
     def initialize
@@ -54,6 +56,10 @@ module Pacman
         end
       end
       Vector[0, 0]
+    end
+
+    def available?(x, y)
+      AVAILABLE_TILE.include? @map[y][x]
     end
 
   end
