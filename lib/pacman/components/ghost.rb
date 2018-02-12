@@ -34,7 +34,7 @@ module Pacman
     end
 
     def update
-      choose_random_move
+      choose_move
       @pos += @vel
       check_events
     end
@@ -60,7 +60,7 @@ module Pacman
       false
     end
 
-    def choose_random_move
+    def choose_move
       result = []
       MOVES.each do |x|
         method(x).call
@@ -68,9 +68,13 @@ module Pacman
         result << x if Helper.available_move?(next_move, @dir, @map)
       end
       result.delete @last_move if result.length > 1
-      res = result.sample
+      res = select_direction(result)
       update_last_move(res)
       method(res).call
+    end
+
+    def select_direction(possible)
+      possible.sample
     end
 
     def update_last_move(move)

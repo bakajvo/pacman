@@ -1,5 +1,6 @@
 require_relative 'component'
 require_relative '../sprites_manager'
+require_relative '../sounds_manager'
 require_relative '../constants'
 require_relative '../helper'
 require 'matrix'
@@ -99,15 +100,20 @@ module Pacman
     end
 
     def eat_point
+      SoundsManager.instance.chomp.play
       @score += 1
     end
 
     def set_overpower
+      SoundsManager.instance.fruit.play
       @overpower = OVERPOWER
     end
 
     def die
-      @alive = false if @overpower.zero?
+      if @overpower.zero?
+        SoundsManager.instance.death.play
+        @alive = false
+      end
     end
 
   end
