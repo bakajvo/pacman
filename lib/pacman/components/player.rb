@@ -100,7 +100,7 @@ module Pacman
     end
 
     def eat_point
-      #SoundsManager.instance.chomp.play
+      # SoundsManager.instance.chomp.play
       @score += 1
     end
 
@@ -110,10 +110,8 @@ module Pacman
     end
 
     def die
-      if @overpower.zero?
-        SoundsManager.instance.death.play
-        @alive = false
-      end
+      SoundsManager.instance.death.play
+      @alive = false
     end
 
   end

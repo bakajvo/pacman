@@ -13,7 +13,7 @@ module Pacman
       @map = map
       @sprites = SpritesManager.instance.get_sprites(BLINKY_SPRITES)
       @weak_ghost = SpritesManager.instance.get_sprites(WEAK_GHOSTS)
-      @pos = @map.spawn(BLINKY)
+      @pos = @spawn = @map.spawn(BLINKY)
       @ticks = 0
       @vel = Vector[0, 0]
       @last_dir = @dir = STAY

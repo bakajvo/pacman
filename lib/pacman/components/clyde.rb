@@ -13,7 +13,7 @@ module Pacman
       @map = map
       @sprites = SpritesManager.instance.get_sprites(CLYDE_SPRITES)
       @weak_ghost = SpritesManager.instance.get_sprites(WEAK_GHOSTS)
-      @pos = @map.spawn(CLYDE)
+      @pos = @spawn = @map.spawn(CLYDE)
       @ticks = 0
       @vel = Vector[0, 0]
       @last_dir = @dir = STAY

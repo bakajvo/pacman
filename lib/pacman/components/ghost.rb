@@ -14,7 +14,7 @@ module Pacman
       @map = map
       @sprites = nil
       @weak_ghost = nil
-      @pos = nil
+      @pos = @spawn = nil
       @ticks = 0
       @vel = Vector[0, 0]
       @last_dir = @dir = STAY
@@ -40,7 +40,10 @@ module Pacman
     end
 
     def check_events
-      @pacman.die if check_die(@pos, @pacman.pos)
+      if check_die(@pos, @pacman.pos)
+        @pacman.die if @pacman.overpower.zero?
+        @pos = @spawn unless @pacman.overpower.zero?
+      end
       @speed = @pacman.overpower.zero? ? fix_position : 1
     end
 
