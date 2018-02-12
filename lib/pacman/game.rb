@@ -1,6 +1,7 @@
 require 'gosu'
 require_relative 'components/tiles'
 require_relative 'components/player'
+require_relative 'components/blinky'
 
 module Pacman
   class Game < Gosu::Window
@@ -15,6 +16,7 @@ module Pacman
     def load_components
       @components << Tiles.new
       @components << Player.new(@components[0])
+      @components << Blinky.new(@components[1], @components[0])
     end
 
     def update

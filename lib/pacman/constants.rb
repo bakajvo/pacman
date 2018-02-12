@@ -15,6 +15,7 @@ module Pacman
 
   PACMAN = 4
   BLINKY = 8
+  BLINKY_SPRITES = [0, 1].freeze
   PINKY = 5
   INKY = 6
   CLYDE = 7

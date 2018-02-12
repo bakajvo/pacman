@@ -1,6 +1,7 @@
 require_relative 'component'
 require_relative '../sprites_manager'
 require_relative '../constants'
+require_relative '../helper'
 require 'matrix'
 
 module Pacman
@@ -41,12 +42,12 @@ module Pacman
     def update
       read_input
       next_move = @pos + @vel
-      if available_move?(next_move, @dir)
+      if Helper.available_move?(next_move, @dir, @map)
         @last_dir = @dir
         @pos = next_move
       else
-        next_move = @pos + last_move
-        @pos = next_move if available_move?(next_move, @last_dir)
+        next_move = @pos + Helper.last_move(@last_dir)
+        @pos = next_move if Helper.available_move?(next_move, @last_dir, @map)
       end
       check_events
     end
@@ -81,37 +82,6 @@ module Pacman
           @map.clear_tile(x, y)
           overpower
         end
-      end
-    end
-
-    def last_move
-      return Vector[SPEED, 0] if @last_dir == RIGHT
-      return Vector[-SPEED, 0] if @last_dir == LEFT
-      return Vector[0, -SPEED] if @last_dir == UP
-      return Vector[0, SPEED] if @last_dir == DOWN
-      Vector[0, 0]
-    end
-
-    def available_move?(pos, dir)
-      x = (pos[0] / 32).to_i
-      xx = ((pos[0] + 31) / 32).to_i
-      y = (pos[1] / 32).to_i
-      yy = ((pos[1] + 31) / 32).to_i
-      case dir
-        when RIGHT
-          x += 1 unless (pos[0].to_i % 32).to_i.zero?
-          return @map.available?(x, y) && @map.available?(x, yy)
-        when LEFT
-          return (@map.available?(x, y) && @map.available?(x, yy))
-        when DOWN
-          y += 1 unless (pos[1].to_i % 32).to_i.zero?
-          return @map.available?(x, y) && @map.available?(xx, y)
-        when UP
-          return @map.available?(x, y) && @map.available?(xx, y)
-        when STAY
-          return true
-        else
-          return false
       end
     end
 
