@@ -2,6 +2,7 @@ require 'gosu'
 require_relative 'components/tiles'
 require_relative 'components/player'
 require_relative 'components/blinky'
+require_relative 'components/end'
 
 module Pacman
   class Game < Gosu::Window
@@ -21,6 +22,11 @@ module Pacman
 
     def update
       @components.each(&:update)
+      if @components.length > 1 && !@components[1].alive
+        score = @components[1].score
+        @components = []
+        @components << End.new(score)
+      end
     end
 
     def draw

@@ -13,16 +13,22 @@ module Pacman
       @pacman = pacman
       @map = map
       @sprites = SpritesManager.instance.get_sprites(BLINKY_SPRITES)
+      @weak_ghost = SpritesManager.instance.get_sprites(WEAK_GHOSTS)
       @pos = @map.spawn(BLINKY)
       @ticks = 0
       @vel = Vector[0, 0]
       @last_dir = @dir = STAY
       @last_move = nil
+      @speed = SPEED
     end
 
     def draw
       index = (@ticks / 10).to_i
-      @sprites[index].draw(@pos[0], @pos[1], 0)
+      if @pacman.overpower.zero?
+        @sprites[index].draw(@pos[0], @pos[1], 0)
+      else
+        @weak_ghost[index].draw(@pos[0], @pos[1], 0)
+      end
       @ticks += 1
       @ticks %= 20
     end
@@ -30,6 +36,18 @@ module Pacman
     def update
       choose_random_move
       @pos += @vel
+      check_events
+    end
+
+    def check_events
+      @pacman.die if check_die(@pos, @pacman.pos)
+      @speed = @pacman.overpower.zero? ? SPEED : 1
+    end
+
+    def check_die(a, b)
+      r = a - b
+      return true if r[0].abs < 5 && r[1].abs < 5
+      false
     end
 
     def choose_random_move
@@ -56,22 +74,22 @@ module Pacman
 
     def turn_left
       @dir = LEFT
-      @vel = Vector[-SPEED, 0]
+      @vel = Vector[-@speed, 0]
     end
 
     def turn_right
       @dir = RIGHT
-      @vel = Vector[SPEED, 0]
+      @vel = Vector[@speed, 0]
     end
 
     def turn_up
       @dir = UP
-      @vel = Vector[0, -SPEED]
+      @vel = Vector[0, -@speed]
     end
 
     def turn_down
       @dir = DOWN
-      @vel = Vector[0, SPEED]
+      @vel = Vector[0, @speed]
     end
 
   end

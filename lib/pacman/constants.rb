@@ -12,6 +12,7 @@ module Pacman
   STAY = 5
 
   SPEED = 2
+  OVERPOWER = 401
 
   PACMAN = 4
   BLINKY = 8
@@ -19,4 +20,5 @@ module Pacman
   PINKY = 5
   INKY = 6
   CLYDE = 7
+  WEAK_GHOSTS = [12, 13].freeze
 end

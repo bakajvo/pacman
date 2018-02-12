@@ -7,6 +7,8 @@ require 'matrix'
 module Pacman
   class Player < Component
 
+    attr_reader :pos, :alive, :overpower, :score
+
     def initialize(map)
       @map = map
       @animation_left = SpritesManager.instance.get_sprites(PACMAN_LEFT)
@@ -17,6 +19,9 @@ module Pacman
       @vel = Vector[0, 0]
       @last_dir = @dir = STAY
       @ticks = 0
+      @alive = true
+      @overpower = 0
+      @score = 0
     end
 
     def turn_left
@@ -50,6 +55,7 @@ module Pacman
         @pos = next_move if Helper.available_move?(next_move, @last_dir, @map)
       end
       check_events
+      @overpower -= 1 unless @overpower.zero?
     end
 
     def draw
@@ -80,7 +86,7 @@ module Pacman
           eat_point
         elsif @map.map[y][x] == 2
           @map.clear_tile(x, y)
-          overpower
+          set_overpower
         end
       end
     end
@@ -93,15 +99,15 @@ module Pacman
     end
 
     def eat_point
-      p 'Mnam mnam mnam'
+      @score += 1
     end
 
-    def overpower
-      p 'OVERPOWER'
+    def set_overpower
+      @overpower = OVERPOWER
     end
 
     def die
-      p 'Arghhhhh'
+      @alive = false if @overpower.zero?
     end
 
   end
