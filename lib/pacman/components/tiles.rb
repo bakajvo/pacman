@@ -14,7 +14,7 @@ module Pacman
 
     def initialize
       @tiles = SpritesManager.instance.get_sprites(MAP_SPRITES)
-      @file = File.open('D:\Skola\RUB\pacman\assets\map\01.map')
+      @file = File.open('../assets/map/01.map')
       @map = []
       @width = 0
       @height = 0

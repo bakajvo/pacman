@@ -13,7 +13,6 @@ module Pacman
     def initialize
       @components = []
       load_components
-
       super @components[0].width, @components[0].height
       self.caption = 'Pacman'
     end
@@ -44,6 +43,3 @@ module Pacman
     end
   end
 end
-
-window = Pacman::Game.new
-window.show

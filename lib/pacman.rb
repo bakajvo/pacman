@@ -1,10 +1,11 @@
-require "pacman/version"
-require "pacman/game"
+require_relative 'pacman/version'
+require_relative 'pacman/game'
 
 module Pacman
   def self.init
     begin
-      Pacman::Game.new
+      window = Pacman::Game.new
+      window.show
     rescue Interrupt => e
       puts "\r Something goes wrong! :( #{e}"
     end

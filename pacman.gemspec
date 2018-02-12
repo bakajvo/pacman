@@ -14,7 +14,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'http://bakaj.cz/'
   spec.license       = 'MIT'
 
-  spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
