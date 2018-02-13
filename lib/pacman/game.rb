@@ -10,6 +10,9 @@ require_relative 'components/win'
 
 module Pacman
   class Game < Gosu::Window
+
+    attr_reader :components
+
     def initialize
       @components = []
       load_components
