@@ -3,6 +3,8 @@ require_relative 'component'
 module Pacman
   class End < Component
 
+    attr_reader :score
+
     def initialize(score)
       @score = score
       @font = Gosu::Font.new(40)

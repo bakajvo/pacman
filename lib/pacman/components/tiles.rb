@@ -11,7 +11,7 @@ module Pacman
 
     AVAILABLE_TILE = [0, 9, 4, 2, 5, 6, 7, 8].freeze
 
-    attr_reader :map, :points
+    attr_reader :map, :points, :tiles, :open_door, :door
 
     def initialize
       @tiles = SpritesManager.instance.get_sprites(MAP_SPRITES)
@@ -34,7 +34,7 @@ module Pacman
     end
 
     def update
-      @open_door -= 1
+      @open_door -= 1 if @open_door > 0
       clear_tile(@door[0] / TILE_SIZE, @door[1] / TILE_SIZE) if @open_door.zero?
     end
 

@@ -8,7 +8,7 @@ require 'matrix'
 module Pacman
   class Player < Component
 
-    attr_reader :pos, :alive, :overpower, :score
+    attr_reader :pos, :alive, :overpower, :score, :dir
 
     def initialize(map)
       @map = map
