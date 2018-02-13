@@ -1,4 +1,5 @@
 module Pacman
+  # Component class
   class Component
     def update
       raise NotImplementedError, 'You must implement the update method'

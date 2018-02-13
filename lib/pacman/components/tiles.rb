@@ -4,8 +4,8 @@ require_relative '../constants'
 require 'matrix'
 
 module Pacman
+  # class tiles
   class Tiles < Component
-
     TILE_SIZE = 32
     ROOT = File.dirname(File.dirname(__FILE__)) + '/../../assets'
 
@@ -79,6 +79,5 @@ module Pacman
         end
       end
     end
-
   end
 end

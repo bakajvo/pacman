@@ -1,6 +1,7 @@
 require 'singleton'
 
 module Pacman
+  # class SoudsManager
   class SoundsManager
     include Singleton
 
@@ -13,6 +14,5 @@ module Pacman
       @death = Gosu::Sample.new(ROOT + '/sounds/pacman_death.wav')
       @chomp = Gosu::Sample.new(ROOT + '/sounds/pacman_chomp.wav')
     end
-
   end
 end

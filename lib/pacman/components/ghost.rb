@@ -5,8 +5,8 @@ require_relative '../helper'
 require 'matrix'
 
 module Pacman
+  # class Ghost
   class Ghost < Component
-
     MOVES = %i[turn_left turn_right turn_up turn_down].freeze
 
     attr_reader :dir, :pos

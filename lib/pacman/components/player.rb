@@ -6,8 +6,8 @@ require_relative '../helper'
 require 'matrix'
 
 module Pacman
+  # class Player
   class Player < Component
-
     attr_reader :pos, :alive, :overpower, :score, :dir
 
     def initialize(map)
@@ -62,16 +62,16 @@ module Pacman
     def draw
       index = (@ticks / 10).to_i
       case @last_dir
-        when RIGHT
-          @animation_right[index].draw(@pos[0], @pos[1], 0)
-        when LEFT
-          @animation_left[index].draw(@pos[0], @pos[1], 0)
-        when UP
-          @animation_up[index].draw(@pos[0], @pos[1], 0)
-        when DOWN
-          @animation_down[index].draw(@pos[0], @pos[1], 0)
-        else
-          @animation_right[0].draw(@pos[0], @pos[1], 0)
+      when RIGHT
+        @animation_right[index].draw(@pos[0], @pos[1], 0)
+      when LEFT
+        @animation_left[index].draw(@pos[0], @pos[1], 0)
+      when UP
+        @animation_up[index].draw(@pos[0], @pos[1], 0)
+      when DOWN
+        @animation_down[index].draw(@pos[0], @pos[1], 0)
+      else
+        @animation_right[0].draw(@pos[0], @pos[1], 0)
       end
 
       @ticks += 1
@@ -113,6 +113,5 @@ module Pacman
       SoundsManager.instance.death.play
       @alive = false
     end
-
   end
 end

@@ -1,6 +1,7 @@
 require 'singleton'
 
 module Pacman
+  # class SpriteManager
   class SpritesManager
     include Singleton
 

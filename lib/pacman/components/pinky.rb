@@ -6,8 +6,8 @@ require_relative 'ghost'
 require 'matrix'
 
 module Pacman
+  # class Pinky
   class Pinky < Ghost
-
     def initialize(pacman, map)
       @pacman = pacman
       @map = map

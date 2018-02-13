@@ -1,3 +1,4 @@
+# module pacman
 module Pacman
   MAP_SPRITES = [54, 55, 40, 41].freeze
   PACMAN_LEFT = [38, 39].freeze

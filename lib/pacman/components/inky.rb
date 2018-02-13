@@ -6,8 +6,8 @@ require_relative 'ghost'
 require 'matrix'
 
 module Pacman
+  # class Inky
   class Inky < Ghost
-
     def initialize(pacman, map)
       @pacman = pacman
       @map = map
@@ -24,6 +24,5 @@ module Pacman
     def select_direction(possible)
       attack(possible)
     end
-
   end
 end

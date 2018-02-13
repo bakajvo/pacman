@@ -1,6 +1,7 @@
 require_relative 'pacman/version'
 require_relative 'pacman/game'
 
+# pacman module
 module Pacman
   def self.init
     begin

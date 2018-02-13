@@ -9,8 +9,8 @@ require_relative 'components/end'
 require_relative 'components/win'
 
 module Pacman
+  # main class Game
   class Game < Gosu::Window
-
     attr_reader :components
 
     def initialize

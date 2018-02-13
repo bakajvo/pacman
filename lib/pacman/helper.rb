@@ -2,8 +2,8 @@ require_relative 'constants'
 require 'matrix'
 
 module Pacman
+  # Helper class
   class Helper
-
     def self.available_move?(pos, dir, map)
       x = (pos[0] / 32).to_i
       xx = ((pos[0] + 31) / 32).to_i
@@ -34,6 +34,5 @@ module Pacman
       return Vector[0, SPEED] if dir == DOWN
       Vector[0, 0]
     end
-
   end
 end
